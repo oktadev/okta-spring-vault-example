@@ -1,0 +1,19 @@
+server:
+  port: 8888
+
+spring:
+  profiles:
+    active: vault
+  cloud:
+    config:
+      server:
+        vault:
+          host: 127.0.0.1
+          port: 8200
+          kvVersion: 2
+
+
+
+logging:
+  level:
+    root: TRACE
