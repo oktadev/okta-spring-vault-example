@@ -1,11 +1,5 @@
-spring:
-  security:
-    oauth2:
-      client:
-        provider:
-          okta:
-            issuer-uri: https://dev-133320.okta.com/oauth2/default
-        registration:
-          okta:
-            client-id: '{cipher}26790622da362e7ed7171071c724a8c95c9351662783ea696bfe4e2c06e73498e67e90dd308ce203b12b123598c9a3e7'
-            client-secret: '{cipher}4f735b763ac6863eb9775271b2392b4e103e824ff3ff5bd3e4e6910dc5e79a5b6ce40ee1ec8c5bfa3e865061343dedf5f7be5b98d95f823ff08043b1150e00f8'
+okta:
+  oauth2:
+    issuer: https://dev-17700857.okta.com/oauth2/default
+    clientId: '{cipher}f29bfd80a886f6806c7ffaf121dd57d4f4e3d564b7f61c60e440eacb4a939cbc28f3319ba17152aaa979f3ebe22b31e9'
+    clientSecret: '{cipher}3b924545113e34f86239def5750f5181183b08c569fcab2979bc535245da72cfd69535f1f1dddd3db476587f3cf043a40f6fa71b3b0cc9e67e5b4ce1d0ff6daf'

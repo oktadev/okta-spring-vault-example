@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
 
-    @GetMapping("/")
-    String hello(@AuthenticationPrincipal OidcUser user) {
-        return String.format("Welcome, %s", user.getFullName());
-    }
+	@GetMapping("/")
+	String hello(@AuthenticationPrincipal OidcUser user) {
+		return String.format("Welcome, %s", user.getFullName());
+	}
 
 }

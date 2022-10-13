@@ -1,8 +1,10 @@
 spring:
-  application:
-    name: vault-demo-app
   cloud:
     config:
       uri: http://localhost:8888
+  config:
+    import: "configserver:"
+  application:
+    name: vault-demo-app
   profiles:
     active: dev

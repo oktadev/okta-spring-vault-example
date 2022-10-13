@@ -13,4 +13,4 @@ spring:
           kvVersion: 2
 logging:
   level:
-    root: TRACE
+    org.springframework.web.client: TRACE
