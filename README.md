@@ -10,7 +10,7 @@ Please read [Secure Secrets With Spring Cloud Config and Vault](https://develope
 - [Okta CLI 0.10.0](https://cli.okta.com)
 - [Docker 20.10.12](https://docs.docker.com/engine/install/)
 - [HTTPie 3.2.1](https://httpie.io/docs/cli/installation)
-- [Vault 1.11.3](https://hub.docker.com/_/vault)
+- [Vault 1.12.0](https://hub.docker.com/_/vault)
 
 > [Okta](https://developer.okta.com/) has Authentication and User Management APIs that reduce development time with instant-on, scalable user infrastructure. Okta's intuitive API and expert support make it easy for developers to authenticate, manage, and secure users and roles in any application.
 
