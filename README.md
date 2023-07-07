@@ -10,7 +10,7 @@ Please read [Secure Secrets With Spring Cloud Config and Vault](https://develope
 - [Okta CLI 0.10.0](https://cli.okta.com)
 - [Docker 20.10.12](https://docs.docker.com/engine/install/)
 - [HTTPie 3.2.1](https://httpie.io/docs/cli/installation)
-- [Vault 1.12.0](https://hub.docker.com/_/vault)
+- [Vault 1.14](https://hub.docker.com/r/hashicorp/vault)
 
 > [Okta](https://developer.okta.com/) has Authentication and User Management APIs that reduce development time with instant-on, scalable user infrastructure. Okta's intuitive API and expert support make it easy for developers to authenticate, manage, and secure users and roles in any application.
 
@@ -27,11 +27,11 @@ To install this example, run the following commands:
 git clone https://github.com/oktadev/okta-spring-vault-example.git
 ```
 
-## Create the OIDC Application in Okta
+## Create an OIDC Application in Okta
 
-Open a command line session at the root of `vault-demo-app`.
+Open a command line session and navigate into the `okta-spring-vault-example/vault-demo-app` directory.
 
-Before you begin, you’ll need a free Okta developer account. Install the [Okta CLI](https://cli.okta.com/) and run `okta register` to sign up for a new account. If you already have an account, run `okta login`. Then, run `okta apps create`. Select the default app name, or change it as you see fit. Choose **Web** and press **Enter**.
+To get a free Okta developer account, install the [Okta CLI](https://cli.okta.com/) and run `okta register` to sign up for a new account. If you already have an account, run `okta login`. Then, run `okta apps create`. Select the default app name, or change it as you see fit. Choose **Web** and press **Enter**.
 
 Select **Okta Spring Boot Starter**. Accept the default Redirect URI values provided for you. That is, a Login Redirect of `http://localhost:8080/login/oauth2/code/okta` and a Logout Redirect of `http://localhost:8080`.
 
@@ -60,12 +60,34 @@ Select **Okta Spring Boot Starter**. Accept the default Redirect URI values prov
 
 Copy the values from `src/main/resources/application.properties` and delete the file.
 
+## Create an OIDC Application in Auth0
+
+Sign up at [Auth0](https://auth0.com/signup) and install the [Auth0 CLI](https://github.com/auth0/auth0-cli). Then run:
+
+```shell
+auth0 login
+```
+
+The terminal will display a device confirmation code and open a browser session to activate the device. After you log in, the terminal will display a success message.
+
+Then, create a client app:
+
+```shell
+auth0 apps create \
+  --name "Spring Boot + Vault" \
+  --description "Demo project of a Spring Boot application with Vault protected secrets" \
+  --type regular \
+  --callbacks http://localhost:8080/login/oauth2/code/okta \
+  --logout-urls http://localhost:8080 \
+  --reveal-secrets
+```
+
 ## Run Vault
 
 Pull the Vault image.
 
 ```shell
-docker pull vault
+docker pull hashicorp/vault:1.14
 ```
 Run a container, make sure to replace `{hostPath}` with a local directory path, such as `/tmp/vault`:
 
@@ -99,7 +121,7 @@ okta.oauth2.issuer="{yourIssuerURI}"
 Run `vault-config-server`:
 
 ```shell
-cd spring-vault/vault-config-server
+cd okta-spring-vault-example/vault-config-server
 ./mvnw spring-boot:run
 ```
 
